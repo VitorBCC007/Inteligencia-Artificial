@@ -1,10 +1,10 @@
 import random
 
 # Tamanho da população inicial
-POPULACAO_T = 3 #POPULAÇÃO
+POPULACAO_T = 10 #POPULAÇÃO
 
 # Número de gerações
-GERADOS = 3 #PESSOAS
+GERADOS = 10 #PESSOAS
 
 # Tamanho do genoma
 GENOMA = 10 #ANALISE de genoma
@@ -62,7 +62,7 @@ def fitness(individuo):
         risco += 2
     
     if historicoFamilia:
-        risco += 10
+        risco += 2
     
    # if exercicio <= 3:  #Abaixo de 3 a pessoa pratica pouco exercicio
     #    risco += 2
@@ -125,11 +125,11 @@ for i in range(int(POPULACAO_T/2)):
     parent1 = random.choice(selected_population) #CRIANDO UM DESCENTENTE 
     parent2 = random.choice(selected_population)
     
-    filho1 = crossover(parent1, parent2)
-    filho2 = crossover(parent1, parent2)
+    filho1 = crossover(parent1, parent2) #PRIMEIRO DESCENDENTE
+    filho2 = crossover(parent1, parent2) #SEGUNDO DESCENDENTE
     
     mudoupopulacao.append(filho1) #Gerados por cruzamento P1+P2 (filhos/as)
-    mudoupopulacao.append(filho2)
+    mudoupopulacao.append(filho2) #Gerados por cruzamento P1+P2 (filhos/as)
     
 
 # Listando mutações
@@ -153,3 +153,5 @@ print(f"Fitness: {fitness(best_individual)}")
 print("="*130)
 
 print(f"\nPopulação final:\n\n {population}") #Toda população 
+
+#Caso tenha 2 ou + genes identicos serão tratados de forma igual (2 sem riscos continuam sendo os melhores casos)
