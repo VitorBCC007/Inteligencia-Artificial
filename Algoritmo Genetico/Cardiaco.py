@@ -1,10 +1,10 @@
 import random
 
 # Tamanho da população inicial
-POPULACAO_T = 5 #POPULAÇÃO
+POPULACAO_T = 300 #POPULAÇÃO
 
 # Número de gerações
-GERADOS = 5 #PESSOAS
+GERADOS = 400 #Gerações
 
 # Tamanho do genoma
 GENOMA = 10 #ANALISE de genoma
@@ -16,6 +16,7 @@ GENESOPCOES = { #DEFININDO AS OPÇÕES (A MENOR = - CHANCES)
     'pressao_sangue': range(80, 200), #
     'colesterol': range(50, 300),#TEM COLESTEROL?
     'fumante': [True, False],# É FUMANTE?
+    'alcool': [True, False],# CONSOME ALCOOL?
     'diabetes': [True, False], #TEM DIABETE?
     'historicoFamilia': [True, False], #HISTÓRICO DA FAMILHA (CARDIACO)
     'exercicio': [0, 1, 2, 3, 4, 5, 6, 7] #PRÁTICA DE EXERCICIOS
@@ -31,6 +32,7 @@ def fitness(individuo):
     pressao_sangue = individuo['pressao_sangue']
     colesterol = individuo['colesterol']
     fumante = individuo['fumante']
+    alcool = individuo['alcool']
     diabetes = individuo['diabetes']
     historicoFamilia = individuo['historicoFamilia']
     exercicio = individuo['exercicio']
@@ -58,6 +60,9 @@ def fitness(individuo):
     if fumante: 
         risco += 2
     
+    if alcool:
+        risco += 2
+        
     if diabetes:
         risco += 2
     
