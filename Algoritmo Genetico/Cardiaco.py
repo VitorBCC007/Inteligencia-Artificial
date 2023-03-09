@@ -18,6 +18,7 @@ GENESOPCOES = { #DEFININDO AS OPÇÕES (A MENOR = - CHANCES)
     'fumante': [True, False],# É FUMANTE?
     'alcool': [True, False],# CONSOME ALCOOL?
     'diabetes': [True, False], #TEM DIABETE?
+    'dor_no_peito':[True, False], #SENTE DORES NO PEITO?
     'historicoFamilia': [True, False], #HISTÓRICO DA FAMILHA (CARDIACO)
     'exercicio': [0, 1, 2, 3, 4, 5, 6, 7] #PRÁTICA DE EXERCICIOS
     
@@ -34,8 +35,10 @@ def fitness(individuo):
     fumante = individuo['fumante']
     alcool = individuo['alcool']
     diabetes = individuo['diabetes']
+    dor_no_peito = individuo ['dor_no_peito']
     historicoFamilia = individuo['historicoFamilia']
     exercicio = individuo['exercicio']
+    
     
     risco = 0  #RISCO inicial 
     
@@ -62,15 +65,20 @@ def fitness(individuo):
     
     if alcool:
         risco += 2
-        
+
     if diabetes:
         risco += 2
     
+    if dor_no_peito:
+        risco +=2  
+        
     if historicoFamilia:
-        risco += 2
+        risco += 2  
     
     if exercicio <= 3:  #Abaixo de 3 a pessoa pratica pouco exercicio
         risco += 2
+
+    
 
     return 1 / (risco + 1)
 #LEMBRANDO: Mesmo que a idade seja alta a pessoa pode ter aspectos que a deixam em aptidão
