@@ -31,7 +31,7 @@ sistema.compute()
 velocidade_ideal = sistema.output['velocidade']
 print("A velocidade ideal para a temperatura de %.1f°C é de %.1f%%." % (temperatura_desejada, velocidade_ideal))
 
-# Plota os gráficos das funções de pertinência
+# PLOTANDO OS GRÁFICOS DAS FUNÇÕES DE PERTINENCIA
 temperatura.view(sim=sistema)
 velocidade.view(sim=sistema)
 
