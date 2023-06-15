@@ -24,14 +24,14 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 
 # Treinar a rede neural
-model.fit(train_images, train_labels, epochs=3)
+model.fit(train_images, train_labels, epochs=1)
 
 # Avaliar a acurácia do modelo
 test_loss, test_acc = model.evaluate(test_images, test_labels)
 print("Acurácia do teste:", test_acc)
 
 # Adicionar ruído às imagens de teste
-noise_factor = 0.0
+noise_factor = 0.9
 test_images_noisy = test_images + noise_factor * np.random.normal(loc=0.0, scale=1.0, size=test_images.shape)
 test_images_noisy = np.clip(test_images_noisy, 0.0, 1.0)
 
