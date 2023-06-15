@@ -13,9 +13,9 @@ test_images = test_images / 255.0
 
 # Definir a arquitetura da rede neural
 model = keras.Sequential([
-    keras.layers.Flatten(input_shape=(28, 28)),
-    keras.layers.Dense(128, activation='relu'),
-    keras.layers.Dense(10, activation='softmax')
+    keras.layers.Flatten(input_shape=(28, 28)), #2D (28x28 pixels)
+    keras.layers.Dense(128, activation='relu'), # -introduzir não-linearidade na rede neural. 128 Neuronios
+    keras.layers.Dense(10, activation='softmax') # 10 neuronios responsaveis pela distribuição de probabilidade
 ])
 
 # Compilar o modelo
@@ -31,7 +31,7 @@ test_loss, test_acc = model.evaluate(test_images, test_labels)
 print("Acurácia do teste:", test_acc)
 
 # Adicionar ruído às imagens de teste
-noise_factor = 0.9
+noise_factor = 0.0
 test_images_noisy = test_images + noise_factor * np.random.normal(loc=0.0, scale=1.0, size=test_images.shape)
 test_images_noisy = np.clip(test_images_noisy, 0.0, 1.0)
 
