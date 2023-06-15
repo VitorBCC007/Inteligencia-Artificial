@@ -27,11 +27,11 @@ noisy_test_images = np.array([add_gaussian_noise(image, std_dev) for image in te
 
 # Definir a arquitetura da rede neural
 model = keras.Sequential([
-    keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)),
-    keras.layers.MaxPooling2D((2, 2)),
+    keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)), # 32 filtros tamanho 3 x 3 / / / /  no input é 32 x 32 com 3 canais de cores
+    keras.layers.MaxPooling2D((2, 2)), #2x2 ( reduz o tamanho do mapa ( dimensão ))
     keras.layers.Flatten(),
-    keras.layers.Dense(64, activation='relu'),
-    keras.layers.Dense(10, activation='softmax')
+    keras.layers.Dense(64, activation='relu'),  # Essa camada possuí 64 unidades - introduzir não-linearidade
+    keras.layers.Dense(10, activation='softmax') # Possuí 10 unidades - faz previsão
 ])
 
 # Compilar o modelo
@@ -40,7 +40,7 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 
 # Treinar a rede neural com as imagens ruidosas
-model.fit(noisy_train_images, train_labels, epochs=1)
+model.fit(noisy_train_images, train_labels, epochs=1) 
 
 # Avaliar a acurácia do modelo usando as imagens de teste ruidosas
 test_loss, test_acc = model.evaluate(noisy_test_images, test_labels)
